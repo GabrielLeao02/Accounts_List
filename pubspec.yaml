@@ -36,6 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_native_splash: ^2.2.16
   flutter_launcher_icons: ^0.13.1
+  dio: ^5.1.2
+  get_it: ^7.6.0
 
 flutter_native_splash:
   image: assets/app/splash.png
