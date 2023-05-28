@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_list/presenter/home/ui/home.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -64,7 +65,8 @@ class _LoginState extends State<Login> {
                 if (_formKey.currentState != null) {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
-
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const Home()));
                     // String name = _passwordController.text;
                     // String email = _emailController.text;
                   }
