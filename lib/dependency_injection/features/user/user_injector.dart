@@ -4,7 +4,7 @@ import 'package:news_list/feature/login/data/datasource/login_datasource.dart';
 import 'package:news_list/feature/login/data/repositories/user_repository_impl.dart';
 import 'package:news_list/feature/login/domain/repositories/user_repository.dart';
 import 'package:news_list/feature/login/domain/usecases/user_usecase.dart';
-import 'package:news_list/presenter/login/mobx/userstore.dart';
+import 'package:news_list/presenter/login/mobx/login_mobx.dart';
 
 class UserInjector {
   void call() {
@@ -22,6 +22,6 @@ class UserInjector {
     GetIt.I.registerFactory<UserUseCase>(
         () => UserUseCaseImpl(GetIt.I<UserRepository>()));
 
-    GetIt.I.registerFactory<UserStore>(() => LoginMobx(GetIt.I<UserUseCase>()));
+    GetIt.I.registerFactory<LoginMobx>(() => LoginMobxImpl(GetIt.I<UserUseCase>()));
   }
 }

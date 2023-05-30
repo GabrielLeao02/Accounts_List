@@ -2,14 +2,14 @@
 import 'package:mobx/mobx.dart';
 import 'package:news_list/feature/login/data/model/user.dart';
 import 'package:news_list/feature/login/domain/usecases/user_usecase.dart';
-part 'userstore.g.dart';
+part 'login_mobx.g.dart';
 
-class LoginMobx = UserStore with _$LoginMobx;
+class LoginMobxImpl = LoginMobx with _$LoginMobxImpl;
 
-abstract class UserStore with Store {
+abstract class LoginMobx with Store {
   final UserUseCase userUseCase;
 
-  UserStore(this.userUseCase);
+  LoginMobx(this.userUseCase);
   @observable
   User? user;
 
