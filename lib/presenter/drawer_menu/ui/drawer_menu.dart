@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:news_list/presenter/login/mobx/userstore.dart';
+import 'package:news_list/presenter/login/mobx/login_mobx.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 class DrawerMenu extends StatefulWidget {
@@ -13,11 +13,11 @@ class DrawerMenu extends StatefulWidget {
 }
 
 class _DrawerMenuState extends State<DrawerMenu> {
-  late final UserStore userStore;
+  late final LoginMobx user;
   @override
   void initState() {
-    userStore = GetIt.I<UserStore>();
-    userStore.loadUser();
+    user = GetIt.I<LoginMobx>();
+    user.loadUser();
     super.initState();
   }
 
@@ -29,15 +29,15 @@ class _DrawerMenuState extends State<DrawerMenu> {
         children: <Widget>[
           Observer(
             builder: (_) {
-              if (userStore.user == null) {
+              if (user.user == null) {
                 return Text('Loading...');
               } else {
                 return UserAccountsDrawerHeader(
                   currentAccountPicture: ClipOval(
-                    child: Image.network(userStore.user!.image!),
+                    child: Image.network(user.user!.image!),
                   ),
-                  accountName:  Text(userStore.user!.nome!),
-                  accountEmail:  Text(userStore.user!.email!),
+                  accountName:  Text(user.user!.nome!),
+                  accountEmail:  Text(user.user!.email!),
                 );
               }
             },
