@@ -9,6 +9,7 @@
 - [flutter_test](https://docs.flutter.dev/testing)
 - [flutter_native_splash ](https://pub.dev/packages/flutter_native_splash)
 - [flutter_launcher_icons  ](https://pub.dev/packages/flutter_launcher_icons)
+- [mobx   ](https://pub.dev/packages/mobx)
 
 
 ## Getting started
