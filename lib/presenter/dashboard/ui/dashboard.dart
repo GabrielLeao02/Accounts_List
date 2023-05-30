@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'package:news_list/presenter/home/ui/home.dart';
-import 'package:news_list/presenter/login/login.dart';
+import 'package:news_list/presenter/login/ui/login.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);

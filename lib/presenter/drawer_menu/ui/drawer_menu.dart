@@ -1,9 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:news_list/presenter/login/mobx/userstore.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
-class DrawerMenu extends StatelessWidget {
+class DrawerMenu extends StatefulWidget {
   const DrawerMenu({
     super.key,
   });
+
+  @override
+  State<DrawerMenu> createState() => _DrawerMenuState();
+}
+
+class _DrawerMenuState extends State<DrawerMenu> {
+  late final UserStore userStore;
+  @override
+  void initState() {
+    userStore = GetIt.I<UserStore>();
+    userStore.loadUser();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,13 +27,20 @@ class DrawerMenu extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          UserAccountsDrawerHeader(
-            currentAccountPicture: ClipOval(
-              child: Image.network(
-                  'https://media.licdn.com/dms/image/D4D03AQE0495VLf4lcA/profile-displayphoto-shrink_800_800/0/1681690509715?e=1690416000&v=beta&t=6sCAtd-BPMh8MoHq2TsMZqmwrQdYPmei4_jvzTEAT2o'),
-            ),
-            accountName: const Text("Gabriel Eduardo G Leão"),
-            accountEmail: const Text("Gabriel.leao@relyon.dev.br"),
+          Observer(
+            builder: (_) {
+              if (userStore.user == null) {
+                return Text('Loading...');
+              } else {
+                return UserAccountsDrawerHeader(
+                  currentAccountPicture: ClipOval(
+                    child: Image.network(userStore.user!.image!),
+                  ),
+                  accountName:  Text(userStore.user!.nome!),
+                  accountEmail:  Text(userStore.user!.email!),
+                );
+              }
+            },
           ),
           ListTile(
             leading: const Icon(Icons.list),
